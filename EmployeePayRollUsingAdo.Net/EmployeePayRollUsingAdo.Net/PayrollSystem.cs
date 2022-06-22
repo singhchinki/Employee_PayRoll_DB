@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -67,7 +68,45 @@ namespace EmployeePayRollUsingAdoNet
                 Console.WriteLine("---------------------------\nError:Records are not updated.\n------------------------------");
             }
         }
-
+        //UC4- Create Record in Database
+        public void createRecord()
+        {
+            SqlConnection connect = new SqlConnection(connectionString);
+            using (connect)
+            {
+                connect.Open();
+                EmployeePayRollUsingAdoNet.EmployeeProfile profile = new EmployeePayRollUsingAdoNet.EmployeeProfile();
+                Console.WriteLine("Name of Employee:");
+                profile.Name = Console.ReadLine();
+                Console.WriteLine("salary of Employee:");
+                profile.salary = Convert.ToDecimal(Console.ReadLine());
+                Console.WriteLine("Start Date of Employee:");
+                profile.DateTime = DateTime.Now;
+                Console.WriteLine("Gender of Employee:");
+                profile.gender = Console.ReadLine();
+                Console.WriteLine("Contact of Employee:");
+                profile.phone = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Address of Employee:");
+                profile.address = Console.ReadLine();
+                Console.WriteLine("Department of Employee:");
+                profile.dept = Console.ReadLine();
+                Console.WriteLine("Basic Pay of Employee:");
+                profile.basicPay = Convert.ToDecimal(Console.ReadLine());
+                SqlCommand command = new SqlCommand("SpAddEmployeeDetails", connect);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@name", profile.Name);
+                command.Parameters.AddWithValue("@salary", profile.salary);
+                command.Parameters.AddWithValue("@startDate", profile.DateTime);
+                command.Parameters.AddWithValue("@Gender", profile.gender);
+                command.Parameters.AddWithValue("@phone_number", profile.phone);
+                command.Parameters.AddWithValue("@address", profile.address);
+                command.Parameters.AddWithValue("@department", profile.dept);
+                command.Parameters.AddWithValue("@basic_pay", profile.basicPay);
+                command.ExecuteNonQuery();
+                Console.WriteLine("Record created successfully.");
+                connect.Close();
+            }
+        }
 
 
     }
