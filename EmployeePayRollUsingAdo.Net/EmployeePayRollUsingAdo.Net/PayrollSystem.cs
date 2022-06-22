@@ -107,6 +107,22 @@ namespace EmployeePayRollUsingAdoNet
                 connect.Close();
             }
         }
+        //UC5 - delete record from table.
+        public void DeleteRecord()
+        {
+            SqlConnection connect = new SqlConnection(connectionString);
+            using (connect)
+            {
+                connect.Open();
+                Console.WriteLine("Enter name of employee to  delete from records:");
+                string name = Console.ReadLine();
+                string query = "delete from employee_payroll where name='" + name + "'";
+                SqlCommand command = new SqlCommand(query, connect);
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+        }
 
 
     }
