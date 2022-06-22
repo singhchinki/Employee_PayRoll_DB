@@ -8,3 +8,15 @@ CREATE TABLE employee_payroll
 );
 
 select * from employee_payroll;
+INSERT INTO employee_payroll (name,salary,startDate) VALUES
+('Suraj', 20000, '2022-04-10'),
+('Sanket', 20000, '2021-03-11'),
+('Akshay', 30000, '2020-10-15');
+INSERT INTO employee_payroll (name,salary,startDate) VALUES
+('Nita', 20000, '2022-01-6'),
+('Aditi', 20000, '2021-02-14'),
+('Shikha', 30000, '2020-8-15');
+INSERT INTO employee_payroll (name,salary,startDate) VALUES
+('Terissa', 20000, '2022-01-6');
+--Retrive data from Table
+select * from employee_payroll;

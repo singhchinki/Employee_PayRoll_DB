@@ -1,2 +1,3 @@
-﻿EmployeePayRollUsingAdo.Net.PayrollSystem payrollSystem = new EmployeePayRollUsingAdo.Net.PayrollSystem();
-payrollSystem.DatabseConnection();
+﻿EmployeePayRollUsingAdoNet.PayrollSystem payrollSystem = new EmployeePayRollUsingAdoNet.PayrollSystem();
+//payrollSystem.DatabseConnection();
+payrollSystem.getDataFromDatabase();
